@@ -8,15 +8,24 @@
 
 import Foundation
 
+let apiURL = "https://api.storytel.net/search?query=harry&page=10"
+
 class Router {
-    let apiURL = "https://api.storytel.net/search?query=harry&page=10"
     
-    func fetchBooks(){
+    func fetchBooks(completion: @escaping (Result<BookModelQuery, Error>) -> ()){
         if let url = URL(string: apiURL){
-            URLSession.shared.dataTask(with: url) { data, response, error in
+            URLSession.shared.dataTask(with: url) {data, response, err in
+                if let err = err{
+                    completion(.failure(err))
+                    // return
+                }
                 if let data = data {
-                    if let jsonString = String(data: data, encoding: .utf8) {
-                        print(jsonString)
+                    do {
+                        let bookModelQuery = try JSONDecoder().decode(BookModelQuery.self, from: data)
+                        completion(.success(bookModelQuery))
+                    }
+                    catch let jsonErr {
+                        completion(.failure(jsonErr))
                     }
                 }
             }.resume()
