@@ -10,12 +10,13 @@
 		494E2C20248406D000276F23 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E2C1F248406D000276F23 /* BookModel.swift */; };
 		499351AC2482EAAD003BB373 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351AB2482EAAD003BB373 /* AppDelegate.swift */; };
 		499351AE2482EAAD003BB373 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351AD2482EAAD003BB373 /* SceneDelegate.swift */; };
-		499351B02482EAAD003BB373 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351AF2482EAAD003BB373 /* ViewController.swift */; };
+		499351B02482EAAD003BB373 /* HarryQueryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351AF2482EAAD003BB373 /* HarryQueryController.swift */; };
 		499351B32482EAAD003BB373 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499351B12482EAAD003BB373 /* Main.storyboard */; };
 		499351B52482EAB1003BB373 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499351B42482EAB1003BB373 /* Assets.xcassets */; };
 		499351B82482EAB1003BB373 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499351B62482EAB1003BB373 /* LaunchScreen.storyboard */; };
 		499351C32482EAB1003BB373 /* StorytelExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351C22482EAB1003BB373 /* StorytelExerciseTests.swift */; };
 		499351CE2482ED74003BB373 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351CD2482ED74003BB373 /* Router.swift */; };
+		49E4B6EB2491709600805781 /* HarryQueryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4B6EA2491709600805781 /* HarryQueryHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +34,7 @@
 		499351A82482EAAD003BB373 /* StorytelExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorytelExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499351AB2482EAAD003BB373 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499351AD2482EAAD003BB373 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		499351AF2482EAAD003BB373 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		499351AF2482EAAD003BB373 /* HarryQueryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarryQueryController.swift; sourceTree = "<group>"; };
 		499351B22482EAAD003BB373 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		499351B42482EAB1003BB373 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		499351B72482EAB1003BB373 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		499351C22482EAB1003BB373 /* StorytelExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorytelExerciseTests.swift; sourceTree = "<group>"; };
 		499351C42482EAB1003BB373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		499351CD2482ED74003BB373 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		49E4B6EA2491709600805781 /* HarryQueryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarryQueryHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,13 +87,14 @@
 			children = (
 				499351AB2482EAAD003BB373 /* AppDelegate.swift */,
 				499351AD2482EAAD003BB373 /* SceneDelegate.swift */,
-				499351AF2482EAAD003BB373 /* ViewController.swift */,
+				499351AF2482EAAD003BB373 /* HarryQueryController.swift */,
 				499351CD2482ED74003BB373 /* Router.swift */,
 				499351B12482EAAD003BB373 /* Main.storyboard */,
 				499351B42482EAB1003BB373 /* Assets.xcassets */,
 				499351B62482EAB1003BB373 /* LaunchScreen.storyboard */,
 				499351B92482EAB1003BB373 /* Info.plist */,
 				494E2C1F248406D000276F23 /* BookModel.swift */,
+				49E4B6EA2491709600805781 /* HarryQueryHeader.swift */,
 			);
 			path = StorytelExercise;
 			sourceTree = "<group>";
@@ -207,8 +210,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				494E2C20248406D000276F23 /* BookModel.swift in Sources */,
+				49E4B6EB2491709600805781 /* HarryQueryHeader.swift in Sources */,
 				499351CE2482ED74003BB373 /* Router.swift in Sources */,
-				499351B02482EAAD003BB373 /* ViewController.swift in Sources */,
+				499351B02482EAAD003BB373 /* HarryQueryController.swift in Sources */,
 				499351AC2482EAAD003BB373 /* AppDelegate.swift in Sources */,
 				499351AE2482EAAD003BB373 /* SceneDelegate.swift in Sources */,
 			);
