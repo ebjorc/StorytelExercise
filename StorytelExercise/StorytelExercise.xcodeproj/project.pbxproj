@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		494E2C20248406D000276F23 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E2C1F248406D000276F23 /* BookModel.swift */; };
+		49873CA82492B64B0008DE92 /* HarryBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49873CA72492B64B0008DE92 /* HarryBookCell.swift */; };
 		499351AC2482EAAD003BB373 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351AB2482EAAD003BB373 /* AppDelegate.swift */; };
 		499351AE2482EAAD003BB373 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351AD2482EAAD003BB373 /* SceneDelegate.swift */; };
 		499351B02482EAAD003BB373 /* HarryQueryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351AF2482EAAD003BB373 /* HarryQueryController.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		494E2C1F248406D000276F23 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		49873CA72492B64B0008DE92 /* HarryBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarryBookCell.swift; sourceTree = "<group>"; };
 		499351A82482EAAD003BB373 /* StorytelExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorytelExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499351AB2482EAAD003BB373 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499351AD2482EAAD003BB373 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				499351B92482EAB1003BB373 /* Info.plist */,
 				494E2C1F248406D000276F23 /* BookModel.swift */,
 				49E4B6EA2491709600805781 /* HarryQueryHeader.swift */,
+				49873CA72492B64B0008DE92 /* HarryBookCell.swift */,
 			);
 			path = StorytelExercise;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				49E4B6EB2491709600805781 /* HarryQueryHeader.swift in Sources */,
 				499351CE2482ED74003BB373 /* Router.swift in Sources */,
 				499351B02482EAAD003BB373 /* HarryQueryController.swift in Sources */,
+				49873CA82492B64B0008DE92 /* HarryBookCell.swift in Sources */,
 				499351AC2482EAAD003BB373 /* AppDelegate.swift in Sources */,
 				499351AE2482EAAD003BB373 /* SceneDelegate.swift in Sources */,
 			);

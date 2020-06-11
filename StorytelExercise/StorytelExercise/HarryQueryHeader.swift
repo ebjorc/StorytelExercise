@@ -10,7 +10,6 @@ import UIKit
 
 class HarryQueryHeader: UICollectionReusableView{
 
-    
     let headerViewLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -26,9 +25,7 @@ class HarryQueryHeader: UICollectionReusableView{
         backgroundColor = .lightGray
         addSubview(headerViewLabel)
         headerViewLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        headerViewLabel.anchor(top: topAnchor, paddingTop: 40)
-        
-        
+        headerViewLabel.anchor(top: topAnchor, paddingTop: 80)
     }
     
     required init?(coder: NSCoder) {
