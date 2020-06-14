@@ -11,57 +11,97 @@ import UIKit
 private let headerIdentifier = "HarryQueryHeader"
 private let cellIdentifier = "HarryQueryCell"
 
-class HarryQueryController: UICollectionViewController {
+class HarryQueryViewController: UIViewController {
+    
+    var tableView = UITableView(frame: .zero, style: .grouped)
+    var harryBooks: [BookModel] = []
+    var harryBooksImages: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         
-        collectionView.backgroundColor = .black
-        
-        // Register the header
-        collectionView!.register(HarryQueryHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
-        collectionView.contentInsetAdjustmentBehavior = .never
-        
-        // Register the collection cells
-        collectionView.register(HarryBookCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        fetchBooks { (res) in
+            switch res {
+            case .success(let bookModelQuery):
+                self.harryBooks += bookModelQuery.items
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let err):
+                print("Error:", err)
+            }
+        }
     }
     
+    func setupTableView(){
+        view.addSubview(tableView)
+        
+        // set delegates
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // set row heights
+        tableView.rowHeight = 120
+        
+        // register cells
+        tableView.register(HarryBookCell.self, forCellReuseIdentifier: cellIdentifier)
+        
+        // register header
+        tableView.register(HarryQueryHeader.self, forHeaderFooterViewReuseIdentifier: headerIdentifier)
+        
+        // set constraints
+        tableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+    }
 }
 
-extension HarryQueryController {
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let queryHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath)
-        return queryHeader
+extension HarryQueryViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        harryBooks.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        cell.backgroundColor = .white
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! HarryBookCell
+        cell.bookTitle = harryBooks[indexPath.row].title
+        cell.authors = harryBooks[indexPath.row].authors
+        cell.narrators = harryBooks[indexPath.row].narrators
+        
+        cell.bookImageView.load(url: URL(string: harryBooks[indexPath.row].cover.url)!)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView,
+            viewForHeaderInSection section: Int) -> UIView? {
+       let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                   headerIdentifier) as! HarryQueryHeader
+       return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 150
+    }
+    
+    func fetchBooks(completion: @escaping (Result<BookModelQuery, Error>) -> ()){
+        if let url = URL(string: apiURL){
+            URLSession.shared.dataTask(with: url) {data, response, err in
+                if let err = err{
+                    completion(.failure(err))
+                    // return
+                }
+                if let data = data {
+                    do {
+                        let bookModelQuery = try JSONDecoder().decode(BookModelQuery.self, from: data)
+                        completion(.success(bookModelQuery))
+                    }
+                    catch let jsonErr {
+                        completion(.failure(jsonErr))
+                    }
+                }
+            }.resume()
+        }
+    }
 }
 
-extension HarryQueryController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.width
-        return CGSize(width: width, height: 100)
-    }
-}
 
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil, paddingTop: CGFloat? = 0, paddingLeft: CGFloat? = 0, paddingBottom: CGFloat? = 0, paddingRight: CGFloat? = 0, width: CGFloat? = nil, height: CGFloat? = nil){
@@ -90,6 +130,20 @@ extension UIView {
         
         if let height = height {
             heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+    }
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
         }
     }
 }

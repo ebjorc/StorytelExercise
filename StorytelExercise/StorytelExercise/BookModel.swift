@@ -15,8 +15,25 @@ struct BookModelQuery: Decodable {
 }
 
 struct BookModel: Decodable {
-    let id: String
     let title: String
-    let authors: [String:String]
-    let narrators: [String:String]
+    let authors: [Author]
+    let narrators: [Narrator]
+    let cover: CoverImage
 }
+
+struct Author: Decodable {
+    let id: String
+    let name: String
+}
+
+struct Narrator: Decodable {
+    let id: String
+    let name: String
+}
+
+struct CoverImage: Decodable {
+    let url: String
+    let width: Int
+    let height: Int
+}
+

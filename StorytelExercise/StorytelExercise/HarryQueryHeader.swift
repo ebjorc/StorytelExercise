@@ -8,8 +8,7 @@
 
 import UIKit
 
-class HarryQueryHeader: UICollectionReusableView{
-
+class HarryQueryHeader: UITableViewHeaderFooterView {
     let headerViewLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -18,17 +17,23 @@ class HarryQueryHeader: UICollectionReusableView{
         label.font = UIFont.systemFont(ofSize: 30)
         return label
     }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        backgroundColor = .lightGray
-        addSubview(headerViewLabel)
-        headerViewLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        headerViewLabel.anchor(top: topAnchor, paddingTop: 80)
+
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        configureContents()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureContents() {
+        headerViewLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        contentView.addSubview(headerViewLabel)
+
+        headerViewLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        headerViewLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+    
     }
 }
