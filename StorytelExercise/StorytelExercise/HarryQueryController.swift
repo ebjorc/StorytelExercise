@@ -20,6 +20,7 @@ class HarryQueryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        overrideUserInterfaceStyle = .light
         
         fetchBooks { (res) in
             switch res {

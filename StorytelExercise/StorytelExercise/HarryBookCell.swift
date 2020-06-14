@@ -20,8 +20,14 @@ class HarryBookCell: UITableViewCell {
     var authors: [Author]? {
         didSet {
             guard let authors = authors else { return }
-            for author in authors {
-                authorsLabel.text?.append(" " + author.name + ",")
+            if authors.count > 0 {
+                authorsLabel.text = "by"
+            }
+            for i in 0..<authors.count {
+                authorsLabel.text?.append(" " + authors[i].name)
+                if i < authors.count - 1 {
+                    authorsLabel.text?.append(",")
+                }
             }
         }
     }
@@ -29,8 +35,14 @@ class HarryBookCell: UITableViewCell {
     var narrators: [Narrator]? {
         didSet {
             guard let narrators = narrators else { return }
-            for narrator in narrators {
-                narratorsLabel.text?.append(" " + narrator.name + ",")
+            if narrators.count > 0 {
+                narratorsLabel.text = "with"
+            }
+            for i in 0..<narrators.count {
+                narratorsLabel.text?.append(" " + narrators[i].name)
+                if i < narrators.count - 1 {
+                    narratorsLabel.text?.append(",")
+                }
             }
         }
     }
@@ -45,7 +57,7 @@ class HarryBookCell: UITableViewCell {
     let bookImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = nil
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
         return iv
     }()
@@ -53,7 +65,6 @@ class HarryBookCell: UITableViewCell {
     let bookTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "Title"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -61,7 +72,6 @@ class HarryBookCell: UITableViewCell {
     let authorsLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "by "
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
@@ -69,7 +79,6 @@ class HarryBookCell: UITableViewCell {
     let narratorsLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "with "
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
@@ -82,13 +91,13 @@ class HarryBookCell: UITableViewCell {
         bookImageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, width: 100, height: 100)
         
         addSubview(bookTitleLabel)
-        bookTitleLabel.anchor(top: bookImageView.topAnchor, left: bookImageView.rightAnchor, paddingTop: 8, paddingLeft: 10)
+        bookTitleLabel.anchor(top: bookImageView.topAnchor, left: bookImageView.rightAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 10, paddingRight: 10)
         
         addSubview(authorsLabel)
-        authorsLabel.anchor(top: bookTitleLabel.bottomAnchor, left: bookTitleLabel.leftAnchor, paddingTop: 12)
+        authorsLabel.anchor(top: bookTitleLabel.bottomAnchor, left: bookTitleLabel.leftAnchor, right: rightAnchor, paddingTop: 12, paddingRight: 10)
         
         addSubview(narratorsLabel)
-               narratorsLabel.anchor(top: authorsLabel.bottomAnchor, left: authorsLabel.leftAnchor, paddingTop: 6)
+        narratorsLabel.anchor(top: authorsLabel.bottomAnchor, left: authorsLabel.leftAnchor, right: rightAnchor, paddingTop: 6, paddingRight: 10)
     }
     
     required init?(coder: NSCoder) {
