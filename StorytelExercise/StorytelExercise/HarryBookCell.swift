@@ -65,7 +65,8 @@ class HarryBookCell: UITableViewCell {
     let bookTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.minimumScaleFactor = 0.5
         return label
     }()
     
@@ -73,6 +74,7 @@ class HarryBookCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 14)
+        label.minimumScaleFactor = 0.5
         return label
     }()
     
@@ -80,6 +82,7 @@ class HarryBookCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 14)
+        label.minimumScaleFactor = 0.5
         return label
     }()
     
@@ -94,7 +97,7 @@ class HarryBookCell: UITableViewCell {
         bookTitleLabel.anchor(top: bookImageView.topAnchor, left: bookImageView.rightAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 10, paddingRight: 10)
         
         addSubview(authorsLabel)
-        authorsLabel.anchor(top: bookTitleLabel.bottomAnchor, left: bookImageView.rightAnchor, right: rightAnchor, paddingTop: 20, paddingLeft: 10)
+        authorsLabel.anchor(top: bookTitleLabel.bottomAnchor, left: bookImageView.rightAnchor, right: rightAnchor, paddingTop: 24, paddingLeft: 10)
         
         
         addSubview(narratorsLabel)
