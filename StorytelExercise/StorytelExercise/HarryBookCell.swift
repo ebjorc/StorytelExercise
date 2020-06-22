@@ -65,7 +65,7 @@ class HarryBookCell: UITableViewCell {
     let bookTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
@@ -93,11 +93,16 @@ class HarryBookCell: UITableViewCell {
         addSubview(bookTitleLabel)
         bookTitleLabel.anchor(top: bookImageView.topAnchor, left: bookImageView.rightAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 10, paddingRight: 10)
         
-        addSubview(authorsLabel)
-        authorsLabel.anchor(top: bookTitleLabel.bottomAnchor, left: bookTitleLabel.leftAnchor, right: rightAnchor, paddingTop: 12, paddingRight: 10)
         
         addSubview(narratorsLabel)
-        narratorsLabel.anchor(top: authorsLabel.bottomAnchor, left: authorsLabel.leftAnchor, right: rightAnchor, paddingTop: 6, paddingRight: 10)
+        narratorsLabel.anchor(left: bookTitleLabel.leftAnchor, bottom: bookImageView.bottomAnchor, right: rightAnchor, paddingBottom: 8, paddingRight: 10)
+        
+        if narrators?.count ?? 0 > 0 {
+            addSubview(authorsLabel)
+            authorsLabel.anchor(left: bookTitleLabel.leftAnchor, bottom: narratorsLabel.topAnchor, right: rightAnchor, paddingBottom: 8, paddingRight: 10)
+        }
+        addSubview(authorsLabel)
+        authorsLabel.anchor(left: bookTitleLabel.leftAnchor, bottom: narratorsLabel.topAnchor, right: rightAnchor, paddingBottom: 8, paddingRight: 10)
     }
     
     required init?(coder: NSCoder) {

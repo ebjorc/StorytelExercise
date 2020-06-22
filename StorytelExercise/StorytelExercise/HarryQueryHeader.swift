@@ -28,12 +28,9 @@ class HarryQueryHeader: UITableViewHeaderFooterView {
     }
     
     func configureContents() {
-        headerViewLabel.translatesAutoresizingMaskIntoConstraints = false
-
         contentView.addSubview(headerViewLabel)
-
+        headerViewLabel.translatesAutoresizingMaskIntoConstraints = false
         headerViewLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         headerViewLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-    
     }
 }

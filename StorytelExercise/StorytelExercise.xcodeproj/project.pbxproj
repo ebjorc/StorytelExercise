@@ -16,8 +16,9 @@
 		499351B52482EAB1003BB373 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499351B42482EAB1003BB373 /* Assets.xcassets */; };
 		499351B82482EAB1003BB373 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499351B62482EAB1003BB373 /* LaunchScreen.storyboard */; };
 		499351C32482EAB1003BB373 /* StorytelExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351C22482EAB1003BB373 /* StorytelExerciseTests.swift */; };
-		499351CE2482ED74003BB373 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499351CD2482ED74003BB373 /* Router.swift */; };
 		49E4B6EB2491709600805781 /* HarryQueryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4B6EA2491709600805781 /* HarryQueryHeader.swift */; };
+		E8323926BCA7A62E2D7D52DD /* Pods_StorytelExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B6DCC4B20773E438AB3AB8A /* Pods_StorytelExercise.framework */; };
+		FC6E641F874F99518603BCF5 /* Pods_StorytelExerciseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C1FC4CE3729046B28F6F03 /* Pods_StorytelExerciseTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B6DCC4B20773E438AB3AB8A /* Pods_StorytelExercise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorytelExercise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D991E3C1720683C8B526E4A /* Pods-StorytelExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorytelExercise.release.xcconfig"; path = "Target Support Files/Pods-StorytelExercise/Pods-StorytelExercise.release.xcconfig"; sourceTree = "<group>"; };
 		494E2C1F248406D000276F23 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		49873CA72492B64B0008DE92 /* HarryBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarryBookCell.swift; sourceTree = "<group>"; };
 		499351A82482EAAD003BB373 /* StorytelExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StorytelExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,8 +47,11 @@
 		499351BE2482EAB1003BB373 /* StorytelExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorytelExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		499351C22482EAB1003BB373 /* StorytelExerciseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorytelExerciseTests.swift; sourceTree = "<group>"; };
 		499351C42482EAB1003BB373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		499351CD2482ED74003BB373 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		49E4B6EA2491709600805781 /* HarryQueryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarryQueryHeader.swift; sourceTree = "<group>"; };
+		99FB229A8A4A1AC9F43E7B89 /* Pods-StorytelExerciseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorytelExerciseTests.release.xcconfig"; path = "Target Support Files/Pods-StorytelExerciseTests/Pods-StorytelExerciseTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6C1FC4CE3729046B28F6F03 /* Pods_StorytelExerciseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorytelExerciseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAFE40F0006A1A2C4009DE45 /* Pods-StorytelExerciseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorytelExerciseTests.debug.xcconfig"; path = "Target Support Files/Pods-StorytelExerciseTests/Pods-StorytelExerciseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F2ED0388AC96A74B685E4407 /* Pods-StorytelExercise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorytelExercise.debug.xcconfig"; path = "Target Support Files/Pods-StorytelExercise/Pods-StorytelExercise.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8323926BCA7A62E2D7D52DD /* Pods_StorytelExercise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,18 +67,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6E641F874F99518603BCF5 /* Pods_StorytelExerciseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B6E1441132D5262281B3EB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2ED0388AC96A74B685E4407 /* Pods-StorytelExercise.debug.xcconfig */,
+				2D991E3C1720683C8B526E4A /* Pods-StorytelExercise.release.xcconfig */,
+				AAFE40F0006A1A2C4009DE45 /* Pods-StorytelExerciseTests.debug.xcconfig */,
+				99FB229A8A4A1AC9F43E7B89 /* Pods-StorytelExerciseTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4993519F2482EAAD003BB373 = {
 			isa = PBXGroup;
 			children = (
 				499351AA2482EAAD003BB373 /* StorytelExercise */,
 				499351C12482EAB1003BB373 /* StorytelExerciseTests */,
 				499351A92482EAAD003BB373 /* Products */,
+				2B6E1441132D5262281B3EB9 /* Pods */,
+				5817B1472C98333CBBF49B28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,7 +112,6 @@
 				499351AB2482EAAD003BB373 /* AppDelegate.swift */,
 				499351AD2482EAAD003BB373 /* SceneDelegate.swift */,
 				499351AF2482EAAD003BB373 /* HarryQueryController.swift */,
-				499351CD2482ED74003BB373 /* Router.swift */,
 				499351B12482EAAD003BB373 /* Main.storyboard */,
 				499351B42482EAB1003BB373 /* Assets.xcassets */,
 				499351B62482EAB1003BB373 /* LaunchScreen.storyboard */,
@@ -111,6 +132,15 @@
 			path = StorytelExerciseTests;
 			sourceTree = "<group>";
 		};
+		5817B1472C98333CBBF49B28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B6DCC4B20773E438AB3AB8A /* Pods_StorytelExercise.framework */,
+				A6C1FC4CE3729046B28F6F03 /* Pods_StorytelExerciseTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,9 +148,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 499351C72482EAB1003BB373 /* Build configuration list for PBXNativeTarget "StorytelExercise" */;
 			buildPhases = (
+				CC3058685A6773573875876E /* [CP] Check Pods Manifest.lock */,
 				499351A42482EAAD003BB373 /* Sources */,
 				499351A52482EAAD003BB373 /* Frameworks */,
 				499351A62482EAAD003BB373 /* Resources */,
+				79095F0FA9158290AE1803D2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +167,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 499351CA2482EAB1003BB373 /* Build configuration list for PBXNativeTarget "StorytelExerciseTests" */;
 			buildPhases = (
+				C479F5B9158F943EEE1CA5F0 /* [CP] Check Pods Manifest.lock */,
 				499351BA2482EAB1003BB373 /* Sources */,
 				499351BB2482EAB1003BB373 /* Frameworks */,
 				499351BC2482EAB1003BB373 /* Resources */,
@@ -207,6 +240,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		79095F0FA9158290AE1803D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StorytelExercise/Pods-StorytelExercise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StorytelExercise/Pods-StorytelExercise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StorytelExercise/Pods-StorytelExercise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C479F5B9158F943EEE1CA5F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StorytelExerciseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC3058685A6773573875876E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StorytelExercise-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		499351A42482EAAD003BB373 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -214,7 +311,6 @@
 			files = (
 				494E2C20248406D000276F23 /* BookModel.swift in Sources */,
 				49E4B6EB2491709600805781 /* HarryQueryHeader.swift in Sources */,
-				499351CE2482ED74003BB373 /* Router.swift in Sources */,
 				499351B02482EAAD003BB373 /* HarryQueryController.swift in Sources */,
 				49873CA82492B64B0008DE92 /* HarryBookCell.swift in Sources */,
 				499351AC2482EAAD003BB373 /* AppDelegate.swift in Sources */,
@@ -378,6 +474,7 @@
 		};
 		499351C82482EAB1003BB373 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2ED0388AC96A74B685E4407 /* Pods-StorytelExercise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +493,7 @@
 		};
 		499351C92482EAB1003BB373 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D991E3C1720683C8B526E4A /* Pods-StorytelExercise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -414,6 +512,7 @@
 		};
 		499351CB2482EAB1003BB373 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAFE40F0006A1A2C4009DE45 /* Pods-StorytelExerciseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -436,6 +535,7 @@
 		};
 		499351CC2482EAB1003BB373 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99FB229A8A4A1AC9F43E7B89 /* Pods-StorytelExerciseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
