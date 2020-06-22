@@ -10,8 +10,7 @@ import Foundation
 
 struct BookModelQuery: Decodable {
     let query: String
-    let nextPageToken: String
-    let totalCount: Int
+    let nextPageToken: String?
     let items: [BookModel]
 }
 

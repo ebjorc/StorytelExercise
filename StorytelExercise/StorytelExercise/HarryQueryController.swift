@@ -18,8 +18,8 @@ class HarryQueryViewController: UIViewController {
     var tableView = UITableView(frame: .zero, style: .grouped)
     var harryBooks: [BookModel] = []
     var harryBooksImages: [UIImage] = []
-    var nextPageToken = "10"
-    var totalHarryBooks = 10
+    var nextPageToken: String? = "10"
+    let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,7 @@ class HarryQueryViewController: UIViewController {
         overrideUserInterfaceStyle = .light
         
         // fetch the 10 first books
+        showSpinner()
         fetch()
     }
     
@@ -70,19 +71,25 @@ class HarryQueryViewController: UIViewController {
         }
     }
     
+    func showSpinner(){
+        tableView.tableFooterView = self.spinner
+        tableView.tableFooterView?.isHidden = false
+        self.spinner.startAnimating()
+    }
+    
     func fetch(){
-        fetchBooks(apiURL: apiURL + nextPageToken) { (res) in
-            switch res {
-            case .success(let bookModelQuery):
-                self.harryBooks += bookModelQuery.items
-                self.nextPageToken = bookModelQuery.nextPageToken
-                print(self.nextPageToken)
-                self.totalHarryBooks = bookModelQuery.totalCount
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+        if let nextPageToken = nextPageToken {
+            fetchBooks(apiURL: apiURL + nextPageToken) { (res) in
+                switch res {
+                case .success(let bookModelQuery):
+                    self.harryBooks += bookModelQuery.items
+                    self.nextPageToken = bookModelQuery.nextPageToken
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                case .failure(let err):
+                    print("Error:", err)
                 }
-            case .failure(let err):
-                print("Error:", err)
             }
         }
     }
@@ -98,6 +105,7 @@ extension HarryQueryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.bookTitle = harryBooks[indexPath.row].title
         cell.authors = harryBooks[indexPath.row].authors
         cell.narrators = harryBooks[indexPath.row].narrators
+        cell.bookImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         cell.bookImageView.sd_setImage(with: URL(string: harryBooks[indexPath.row].cover.url), placeholderImage: UIImage(named: "placeholder.png"))
         return cell
     }
@@ -116,12 +124,12 @@ extension HarryQueryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == harryBooks.count - 1 {
             // Load more
-            if harryBooks.count < totalHarryBooks {
-                let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-                spinner.startAnimating()
-                tableView.tableFooterView = spinner
-                tableView.tableFooterView?.isHidden = false
+            if nextPageToken != nil {
+                showSpinner()
                 fetch()
+            }
+            else{
+                tableView.tableFooterView?.isHidden = true
             }
         }
     }
