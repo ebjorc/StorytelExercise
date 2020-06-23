@@ -1,0 +1,6 @@
+framework module Pods_StorytelExerciseTests {
+  umbrella header "Pods-StorytelExerciseTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
