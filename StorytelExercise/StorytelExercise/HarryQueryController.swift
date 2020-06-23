@@ -40,6 +40,7 @@ class HarryQueryViewController: UIViewController {
         
         // set row heights
         tableView.rowHeight = 120
+        tableView.estimatedRowHeight = tableView.rowHeight
         
         // register cells
         tableView.register(HarryBookCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -85,7 +86,9 @@ class HarryQueryViewController: UIViewController {
                     self.harryBooks += bookModelQuery.items
                     self.nextPageToken = bookModelQuery.nextPageToken
                     DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                        let indexPaths = (self.harryBooks.count - bookModelQuery.items.count ..< self.harryBooks.count)
+                        .map { IndexPath(row: $0, section: 0) }
+                        self.tableView.insertRows(at: indexPaths, with: UITableView.RowAnimation.none)
                     }
                 case .failure(let err):
                     print("Error:", err)
