@@ -17,7 +17,6 @@ class HarryQueryViewController: UIViewController {
     
     var tableView = UITableView(frame: .zero, style: .grouped)
     var harryBooks: [BookModel] = []
-    var harryBooksImages: [UIImage] = []
     var nextPageToken: String? = "10"
     let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
     
@@ -65,11 +64,12 @@ class HarryQueryViewController: UIViewController {
                         let indexPaths = (self.harryBooks.count - bookModelQuery.items.count ..< self.harryBooks.count)
                         .map { IndexPath(row: $0, section: 0) }
                         self.tableView.insertRows(at: indexPaths, with: UITableView.RowAnimation.none)
+                        self.spinner.stopAnimating()
                     }
                 case .failure(let err):
                     print("Error:", err)
-                    // Show some kind of alert
                     self.spinner.stopAnimating()
+                    // Show some kind of alert
                 }
             }
         }
