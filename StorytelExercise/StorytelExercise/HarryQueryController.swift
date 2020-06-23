@@ -17,7 +17,7 @@ class HarryQueryViewController: UIViewController {
     
     var tableView = UITableView(frame: .zero, style: .grouped)
     var harryBooks: [BookModel] = []
-    var nextPageToken: String? = "10"
+    var nextPageToken: String? = "0"
     let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
     
     override func viewDidLoad() {
@@ -61,9 +61,7 @@ class HarryQueryViewController: UIViewController {
                     self.harryBooks += bookModelQuery.items
                     self.nextPageToken = bookModelQuery.nextPageToken
                     DispatchQueue.main.async {
-                        let indexPaths = (self.harryBooks.count - bookModelQuery.items.count ..< self.harryBooks.count)
-                        .map { IndexPath(row: $0, section: 0) }
-                        self.tableView.insertRows(at: indexPaths, with: UITableView.RowAnimation.none)
+                        self.tableView.reloadData()
                         self.spinner.stopAnimating()
                     }
                 case .failure(let err):

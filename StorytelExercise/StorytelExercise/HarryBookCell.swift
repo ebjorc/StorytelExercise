@@ -37,12 +37,15 @@ class HarryBookCell: UITableViewCell {
             guard let narrators = narrators else { return }
             if narrators.count > 0 {
                 narratorsLabel.text = "with"
-            }
-            for i in 0..<narrators.count {
-                narratorsLabel.text?.append(" " + narrators[i].name)
-                if i < narrators.count - 1 {
-                    narratorsLabel.text?.append(",")
+                for i in 0..<narrators.count {
+                    narratorsLabel.text?.append(" " + narrators[i].name)
+                    if i < narrators.count - 1 {
+                        narratorsLabel.text?.append(",")
+                    }
                 }
+            }
+            else{
+                narratorsLabel.text = "No narrator"
             }
         }
     }
@@ -98,7 +101,6 @@ class HarryBookCell: UITableViewCell {
         
         addSubview(authorsLabel)
         authorsLabel.anchor(top: bookTitleLabel.bottomAnchor, left: bookImageView.rightAnchor, right: rightAnchor, paddingTop: 24, paddingLeft: 10)
-        
         
         addSubview(narratorsLabel)
         narratorsLabel.anchor(left: bookTitleLabel.leftAnchor, bottom: bookImageView.bottomAnchor, right: rightAnchor, paddingBottom: 8, paddingRight: 10)
