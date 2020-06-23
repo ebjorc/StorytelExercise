@@ -102,12 +102,9 @@ class HarryBookCell: UITableViewCell {
         
         addSubview(narratorsLabel)
         narratorsLabel.anchor(left: bookTitleLabel.leftAnchor, bottom: bookImageView.bottomAnchor, right: rightAnchor, paddingBottom: 8, paddingRight: 10)
-        
-    
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

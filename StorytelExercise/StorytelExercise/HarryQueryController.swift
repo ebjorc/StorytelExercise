@@ -28,7 +28,7 @@ class HarryQueryViewController: UIViewController {
         
         // fetch the 10 first books
         showSpinner()
-        fetch()
+        fetchBooks()
     }
     
     func setupTableView(){
@@ -40,6 +40,8 @@ class HarryQueryViewController: UIViewController {
         
         // set row heights
         tableView.rowHeight = 120
+        
+        // Make sure the estimated row height is same as row height to avoid flickering
         tableView.estimatedRowHeight = tableView.rowHeight
         
         // register cells
@@ -52,7 +54,28 @@ class HarryQueryViewController: UIViewController {
         tableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
     }
     
-    func fetchBooks(apiURL: String, completion: @escaping (Result<BookModelQuery, Error>) -> ()){
+    func fetchBooks(){
+        if let nextPageToken = nextPageToken {
+            fetchBooksFromAPI(apiURL: apiURL + nextPageToken) { (res) in
+                switch res {
+                case .success(let bookModelQuery):
+                    self.harryBooks += bookModelQuery.items
+                    self.nextPageToken = bookModelQuery.nextPageToken
+                    DispatchQueue.main.async {
+                        let indexPaths = (self.harryBooks.count - bookModelQuery.items.count ..< self.harryBooks.count)
+                        .map { IndexPath(row: $0, section: 0) }
+                        self.tableView.insertRows(at: indexPaths, with: UITableView.RowAnimation.none)
+                    }
+                case .failure(let err):
+                    print("Error:", err)
+                    // Show some kind of alert
+                    self.spinner.stopAnimating()
+                }
+            }
+        }
+    }
+    
+    func fetchBooksFromAPI(apiURL: String, completion: @escaping (Result<BookModelQuery, Error>) -> ()){
         if let url = URL(string: apiURL){
             URLSession.shared.dataTask(with: url) {data, response, err in
                 if let err = err{
@@ -76,25 +99,6 @@ class HarryQueryViewController: UIViewController {
         tableView.tableFooterView = self.spinner
         tableView.tableFooterView?.isHidden = false
         self.spinner.startAnimating()
-    }
-    
-    func fetch(){
-        if let nextPageToken = nextPageToken {
-            fetchBooks(apiURL: apiURL + nextPageToken) { (res) in
-                switch res {
-                case .success(let bookModelQuery):
-                    self.harryBooks += bookModelQuery.items
-                    self.nextPageToken = bookModelQuery.nextPageToken
-                    DispatchQueue.main.async {
-                        let indexPaths = (self.harryBooks.count - bookModelQuery.items.count ..< self.harryBooks.count)
-                        .map { IndexPath(row: $0, section: 0) }
-                        self.tableView.insertRows(at: indexPaths, with: UITableView.RowAnimation.none)
-                    }
-                case .failure(let err):
-                    print("Error:", err)
-                }
-            }
-        }
     }
 }
 
@@ -129,7 +133,7 @@ extension HarryQueryViewController: UITableViewDelegate, UITableViewDataSource {
             // Load more
             if nextPageToken != nil {
                 showSpinner()
-                fetch()
+                fetchBooks()
             }
             else{
                 tableView.tableFooterView?.isHidden = true

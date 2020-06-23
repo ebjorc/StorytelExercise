@@ -17,7 +17,7 @@ class StorytelExerciseTests: XCTestCase {
         XCTAssertEqual(harryQueryController.harryBooks.count, 0)
         XCTAssertEqual(harryQueryController.nextPageToken, "10")
         
-        harryQueryController.fetch()
+        harryQueryController.fetch
         sleep(10)
         harryQueryController.tableView.reloadData()
         
