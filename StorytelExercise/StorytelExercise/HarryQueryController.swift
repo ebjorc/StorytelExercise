@@ -60,8 +60,10 @@ class HarryQueryViewController: UIViewController {
                 case .success(let bookModelQuery):
                     self.harryBooks += bookModelQuery.items
                     self.nextPageToken = bookModelQuery.nextPageToken
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                    DispatchQueue.main.asyncAfter(deadline:.now() + 1) {
+                        let indexPaths = (self.harryBooks.count - bookModelQuery.items.count ..< self.harryBooks.count)
+                        .map { IndexPath(row: $0, section: 0) }
+                        self.tableView.insertRows(at: indexPaths, with: UITableView.RowAnimation.top)
                         self.spinner.stopAnimating()
                     }
                 case .failure(let err):
@@ -106,6 +108,16 @@ extension HarryQueryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == harryBooks.count - 1 {
+            // Load more
+            if nextPageToken != nil {
+                showSpinner()
+                fetchBooks()
+            }
+            else{
+                tableView.tableFooterView?.isHidden = true
+            }
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! HarryBookCell
         cell.bookTitle = harryBooks[indexPath.row].title
         cell.authors = harryBooks[indexPath.row].authors
@@ -124,19 +136,6 @@ extension HarryQueryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 150
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == harryBooks.count - 1 {
-            // Load more
-            if nextPageToken != nil {
-                showSpinner()
-                fetchBooks()
-            }
-            else{
-                tableView.tableFooterView?.isHidden = true
-            }
-        }
     }
 }
 
