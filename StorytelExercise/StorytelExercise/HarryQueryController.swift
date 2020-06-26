@@ -61,8 +61,10 @@ class HarryQueryViewController: UIViewController {
                     self.harryBooks += bookModelQuery.items
                     self.nextPageToken = bookModelQuery.nextPageToken
                     DispatchQueue.main.asyncAfter(deadline:.now() + 1) {
-                        let indexPaths = (self.harryBooks.count - bookModelQuery.items.count ..< self.harryBooks.count)
-                        .map { IndexPath(row: $0, section: 0) }
+                        var indexPaths = [IndexPath]()
+                        for row in self.harryBooks.count - bookModelQuery.items.count ..< self.harryBooks.count {
+                            indexPaths.append(contentsOf: [IndexPath(row: row, section: 0)])
+                        }
                         self.tableView.insertRows(at: indexPaths, with: UITableView.RowAnimation.top)
                         self.spinner.stopAnimating()
                     }
