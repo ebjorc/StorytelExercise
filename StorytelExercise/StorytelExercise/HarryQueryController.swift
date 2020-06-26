@@ -70,8 +70,12 @@ class HarryQueryViewController: UIViewController {
                     }
                 case .failure(let err):
                     print("Error:", err)
-                    self.spinner.stopAnimating()
-                    // Show some kind of alert
+                    DispatchQueue.main.async{
+                        let alert = UIAlertController(title: "Error", message: "Fetch failed, please try again later", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                        self.spinner.stopAnimating()
+                    }
                 }
             }
         }
